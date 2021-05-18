@@ -1,5 +1,6 @@
 <?php
 
+// DBに接続
 $link = mysqli_connect('localhost', 'root', 'root', 'book');
 
 // 接続状況をチェックします
@@ -10,23 +11,9 @@ if (mysqli_connect_errno()) {
 }
 
 // userテーブルの全てのデータを取得する
-$query  = "SELECT user_id, name FROM user_list;";
+$queryUser  = "SELECT user_id, name FROM user_list;";
 // bookテーブルの全てのデータを取得する
-$query2 = "SELECT book_id, name FROM book_list"; 
-
-// クエリを実行します。
-if ($result = mysqli_query($link, $query)) {
-    echo "SELECT に成功しました。\n";
-    foreach ($result as $row) {
-        var_dump($row);
-    }
-}
-if ($result = mysqli_query($link, $query2)) {
-    echo "SELECT に成功しました。\n";
-    foreach ($result as $row) {
-        var_dump($row);
-    }
-}
+$queryBook = "SELECT book_id, name FROM book_list"; 
 
 // 接続を閉じます
 mysqli_close($link);
