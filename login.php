@@ -13,11 +13,6 @@
 </head>
 
 <body>
-    <div style="text-align:center;">
-        <a href="fullTextSeach.php/">全文検索</a></br>
-        <a href="db.php/">DB接続</a></br>
-        <a href="login.php/">ログイン</a>
-    </div>
 </body>
 
 </html>
