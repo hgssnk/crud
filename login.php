@@ -13,6 +13,11 @@
 </head>
 
 <body>
+    <form action=“login.php” method=“POST”>
+        <input type=“text” name=“user_id“>
+        <input type=“text” name=“password“>
+        <input type=“submit” value=“送信“>
+    </form>
 </body>
 
 </html>
