@@ -16,7 +16,8 @@
     <div style="text-align:center;">
         <a href="allSearch.php/">一覧</a></br>
         <a href="fullTextSearch.php/">検索</a></br>
-        <a href="creatBook.php/">登録</a>
+        <a href="creatBook.php/">登録</a></br>
+        <a href="delete.php/">削除</a>
     </div>
 </body>
 
