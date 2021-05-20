@@ -17,3 +17,16 @@ $queryBook = "SELECT book_id, name FROM book_list";
 
 // 接続を閉じます
 mysqli_close($link);
+
+// class db{
+//     const DB_NAME   = "book";
+//     const HOST      = "localhost";
+//     const PASS      = "root";
+//     const USER      = "root";
+
+//     $link = mysql_connect(DB_NAME,)
+
+//     function connect(){
+
+//     }
+// }

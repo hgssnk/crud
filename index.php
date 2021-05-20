@@ -14,10 +14,9 @@
 
 <body>
     <div style="text-align:center;">
-        <a href="allSearch.php/">全検索</a></br>
-        <a href="fullTextSearch.php/">全文検索</a></br>
-        <a href="db.php/">DB接続</a></br>
-        <a href="login.php/">ログイン</a>
+        <a href="allSearch.php/">一覧</a></br>
+        <a href="fullTextSearch.php/">検索</a></br>
+        <a href="creatBook.php/">登録</a>
     </div>
 </body>
 

@@ -52,11 +52,11 @@
 			echo $e->getMessage();
 			die();
 		}
-
 		// 接続を閉じる
 		$dbh = null;
 		?>
 	</table>
+	<div style="text-align:center;"><button type="button" onclick="history.back()">戻る</button></div>
 </body>
 
 </html>

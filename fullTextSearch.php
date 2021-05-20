@@ -17,15 +17,14 @@
             <table border="0" align="center">
                 <tr>
                     <th>書籍名</th>
-                    <th>カテゴリ</th>
                 </tr>
                 <tr>
                     <td><input type="text" name="book_name"></td>
-                    <td><input type="text" name="category"></td>
                 </tr>
             </table>
             <div style="text-align:center;"><input type="submit" value="検索"></div>
         </form>
+        <div style="text-align:center;"><button type="button" onclick="history.back()">戻る</button></div>
 </body>
 
 </html>
