@@ -21,26 +21,10 @@
     $cg = $_POST['category'];
     $ye = $_POST['year'];
 
-    // 変数の初期化
-    $sql = null;
-    $res = null;
-    $dbh = null;
-
-    try {
-        // DBへ接続
-        $dbh = new PDO("mysql:host=localhost; dbname=book; charset=utf8", 'root', 'root');
-
-        // SQL作成
-        $sql = "INSERT INTO book_list VALUES(null,'$bn','$au','$cg','$ye')";
-
-        // SQL実行
-        $res = $dbh->query($sql);
-    } catch (PDOException $e) {
-        echo $e->getMessage();
-        die();
-    }
-    // 接続閉じ
-    $dbh = null;
+    include('./dao.php');
+    $dao = new DAO;
+    $sql = "INSERT INTO book_list VALUES(null,'$bn','$au','$cg','$ye')";
+    $res = $dao->daoSql($sql);
     echo '<div style="text-align:center;">登録完了</div>';
     ?>
     <div style="text-align:center;"><button type="button" onclick="history.back()">戻る</button></div>

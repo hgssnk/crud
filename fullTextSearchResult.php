@@ -24,37 +24,21 @@
         <?php
         $bn = $_POST['book_name'];
 
-        // 変数の初期化
-        $sql = null;
-        $res = null;
-        $dbh = null;
+        include('./dao.php');
+        $dao = new DAO;
+        $sql = "SELECT * FROM book_list WHERE delete_flg = 0 AND book_name LIKE '%$bn%'";
+        $res = $dao->daoSql($sql);
 
-        try {
-            // DBへ接続
-            $dbh = new PDO("mysql:host=localhost; dbname=book; charset=utf8", 'root', 'root');
-
-            // SQL作成
-            $sql = "SELECT * FROM book_list WHERE book_name LIKE '%$bn%'";
-
-            // SQL実行
-            $res = $dbh->query($sql);
-
-            // 取得したデータを出力
-            foreach ($res as $value) {
-                echo "<tr>"
-                    . "<td>$value[book_id]</td>"
-                    . "<td>$value[book_name]</td>"
-                    . "<td>$value[author]</td>"
-                    . "<td>$value[category]</td>"
-                    . "<td>$value[year]</td>"
-                    . "</tr>";
-            }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-            die();
+        // 取得したデータを出力
+        foreach ($res as $value) {
+            echo "<tr>"
+                . "<td>$value[book_id]</td>"
+                . "<td>$value[book_name]</td>"
+                . "<td>$value[author]</td>"
+                . "<td>$value[category]</td>"
+                . "<td>$value[year]</td>"
+                . "</tr>";
         }
-        // 接続を閉じる
-        $dbh = null;
         ?>
     </table>
     <div style="text-align:center;"><button type="button" onclick="history.back()">戻る</button></div>

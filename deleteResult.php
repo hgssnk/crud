@@ -18,26 +18,10 @@
     // POST取得
     $bi = $_POST['book_id'];
 
-    // 変数の初期化
-    $sql = null;
-    $res = null;
-    $dbh = null;
-
-    try {
-        // DBへ接続
-        $dbh = new PDO("mysql:host=localhost; dbname=book; charset=utf8", 'root', 'root');
-
-        // SQL作成
-        $sql = "DELETE FROM book_list WHERE book_id='$bi'";
-
-        // SQL実行
-        $res = $dbh->query($sql);
-    } catch (PDOException $e) {
-        echo $e->getMessage();
-        die();
-    }
-    // 接続閉じ
-    $dbh = null;
+    include('./dao.php');
+    $dao = new DAO;
+    $sql = "UPDATE book_list SET delete_flg = 1 WHERE book_id='$bi'";
+    $res = $dao->daoSql($sql);
     ?>
     <div style="text-align:center;">
         <a href="allSearch.php">一覧へ</a></br>

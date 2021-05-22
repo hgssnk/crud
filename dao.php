@@ -1,7 +1,6 @@
 <?php
 class DAO
 {
-    // 変数の初期化
     private $sql;
     private $res;
     private $dbh;
@@ -28,41 +27,23 @@ class DAO
     }
 
     // 全検索
-    function select($sql)
+    function daoSql($sql)
     {
-        // DB接続
-        $dbh = $this->connect();
+        try {
+            $dbh = new PDO("mysql:host=localhost; dbname=book; charset=utf8", 'root', 'root');
+            
+            $dbh = $this->connect();
 
-        // SQL実行
-        $res = $dbh->query($sql);
+            $res = $dbh->query($sql);
 
-        // 結果返す
-        return $res;
-    }
 
-    // 登録
-    function insert($sql)
-    {
-        // DB接続
-        $dbh = $this->connect();
 
-        // SQL実行
-        $res = $dbh->query($sql);
-
-        // 結果返却
-
-    }
-
-    // 削除
-    function deleteDb($dbName, $id)
-    {
-        // DB接続
-        $dbh = $this->connect();
-
-        // SQL
-        $sql = "DELETE FROM $dbName WHERE id = '$id'";
-
-        // 実行
-        $res = $dbh->query($sql);
+            return $res;
+        } catch (Exception $e) {
+            echo 'error' . $e->getMesseage;
+            die();
+        }
+        $dbh = null;
+        return $dbh;
     }
 }

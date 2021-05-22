@@ -13,49 +13,30 @@
 </head>
 
 <body>
-    <table border="1" align="center">
-        <tr>
-            <th>書籍ID</th>
-            <th>書籍名</th>
-            <th>著者</th>
-            <th>カテゴリ</th>
-            <th>出版年</th>
-        </tr>
-
-        <?php
-        // 変数の初期化
-        $sql = null;
-        $res = null;
-        $dbh = null;
-
-        try {
-            // DBへ接続
-            $dbh = new PDO("mysql:host=localhost; dbname=book; charset=utf8", 'root', 'root');
-
-            // SQL作成
-            $sql = "SELECT * FROM book_list";
-
-            // SQL実行
-            $res = $dbh->query($sql);
-
-            // 取得したデータを出力
-            foreach ($res as $value) {
-                echo "<tr>"
-                    . "<td>$value[book_id]</td>"
-                    . "<td>$value[book_name]</td>"
-                    . "<td>$value[author]</td>"
-                    . "<td>$value[category]</td>"
-                    . "<td>$value[year]</td>"
-                    . "</tr>";
-            }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-            die();
-        }
-        // 接続を閉じる
-        $dbh = null;
-        ?>
-    </table>
+<table border="1" align="center">
+		<tr>
+			<th>書籍ID</th>
+			<th>書籍名</th>
+			<th>著者</th>
+			<th>カテゴリ</th>
+			<th>出版年</th>
+		</tr>
+		<?php
+		include('./dao.php');
+		$dao = new DAO;
+		$sql = "SELECT * FROM book_list WHERE delete_flg = 0";
+		$res = $dao->daoSql($sql);
+		foreach ($res as $value) {
+			echo "<tr>"
+				. "<td>$value[book_id]</td>"
+				. "<td>$value[book_name]</td>"
+				. "<td>$value[author]</td>"
+				. "<td>$value[category]</td>"
+				. "<td>$value[year]</td>"
+				. "</tr>";
+		}
+		?>
+	</table>
     <div style="text-align:center;">
         <form action="../deleteResult.php" method="POST">
             <table align="center">
@@ -69,5 +50,4 @@
         </form>
     </div>
 </body>
-
 </html>
